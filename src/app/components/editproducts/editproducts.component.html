@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+</head>
+<body>
+  <input type="button" class="btn btn-success" routerLink="/dashboard" value="Back">
+
+    <h1 style="margin-left: 580px;">Update Product</h1>
+
+    <form [formGroup]="product" (ngSubmit)="submit()">
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="form6Example1">Product Name</label>
+            <input type="text" formControlName="productName" class="form-control" />
+            <div class="text-danger" *ngIf="product.controls['productName'].invalid && product.controls['productName'].touched" >
+              <small [hidden]="!product.controls['productName'].errors?.['required']">Product Name is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="form6Example2">Price</label>
+            <input type="text" formControlName="productPrice" class="form-control" />
+            <div class="text-danger" *ngIf="product.controls['productPrice'].invalid && product.controls['productPrice'].touched" >
+              <small [hidden]="!product.controls['productPrice'].errors?.['required']">Product Price is required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
+            <label class="form-label" for="form6Example3">Category</label>
+            <input type="text" formControlName="category" class="form-control" />
+            <div *ngIf="product.controls['category'].invalid && (product.controls['category'].dirty || product.controls['category'].touched)">
+              <small style="color: red;" *ngIf="product.controls['category'].errors?.['required']">Category is required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example4">Description</label>
+        <textarea formControlName="description" rows="4" cols="50" class="form-control"></textarea>
+        <div class="text-danger" *ngIf="product.controls['description'].invalid && product.controls['description'].touched" >
+          <small [hidden]="!product.controls['description'].errors?.['required']">Description is required</small>
+        </div>
+      </div>
+
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example5">Highlights</label>
+        <textarea formControlName="highlights" rows="4" cols="50" class="form-control"></textarea>
+        <div class="text-danger" *ngIf="product.controls['highlights'].invalid && product.controls['highlights'].touched" >
+          <small [hidden]="!product.controls['highlights'].errors?.['required']">Highlights is required</small>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-outline">
+          <label class="form-label" for="form6Example3">Count</label>
+          <input type="text" formControlName="stocksAvailability" class="form-control" />
+          <div *ngIf="product.controls['stocksAvailability'].invalid && (product.controls['stocksAvailability'].dirty || product.controls['stocksAvailability'].touched)">
+            <small style="color: red;" *ngIf="product.controls['stocksAvailability'].errors?.['required']">Count is required</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example7">Image</label>
+        <input type="file" formControlName="imageUrl" (change)="onFileSelected($event)" accept="image/*"/>
+      </div>
+
+      <button type="submit" [disabled]="product.invalid" class="btn btn-primary btn-block mb-4">Submit</button>
+    </form>
+</body>
+</html>

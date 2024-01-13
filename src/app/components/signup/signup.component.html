@@ -1,0 +1,71 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<html>
+
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+</head>
+
+<body id="LoginForm">
+  <div class="container">
+    <div class="login-form">
+      <div class="main-div">
+        <div class="panel">
+          <h1>Signup</h1><br>
+        </div>
+        <form [formGroup]="signup">
+          <div class="form-group">
+            <input type="text" formControlName="firstName" class="form-control" placeholder="Firstname">
+            <div *ngIf="signup.controls['firstName'].invalid && (signup.controls['firstName'].dirty || signup.controls['firstName'].touched)">
+              <small style="color: red;" *ngIf="signup.controls['firstName'].errors?.['required']">Firstname is required</small>
+              <small style="color: red;" *ngIf="signup.controls['firstName'].errors?.['minlength']">Firstname must be at least 2 characters long.</small>
+              <small style="color: red;" *ngIf="signup.controls['firstName'].errors?.['pattern']">Firstname is Invalid</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" formControlName="lastName" class="form-control" placeholder="Lastname">
+            <div *ngIf="signup.controls['lastName'].invalid && (signup.controls['lastName'].dirty || signup.controls['lastName'].touched)">
+              <small style="color: red;" *ngIf="signup.controls['lastName'].errors?.['required']">Lastname is required</small>
+              <small style="color: red;" *ngIf="signup.controls['lastName'].errors?.['pattern']">Lastname is Invalid</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" formControlName="mobile" class="form-control" placeholder="Mobile">
+            <div *ngIf="signup.controls['mobile'].invalid && (signup.controls['mobile'].dirty || signup.controls['mobile'].touched)">
+              <small style="color: red;" *ngIf="signup.controls['mobile'].errors?.['required']">Mobile Number is required</small>
+              <small style="color: red;" *ngIf="signup.controls['mobile'].errors?.['minlength']">Mobile Number is Invalid.</small>
+              <small style="color: red;" *ngIf="signup.controls['mobile'].errors?.['maxlength']">Mobile Number is Invalid.</small>
+              <small style="color: red;" *ngIf="signup.controls['mobile'].errors?.['pattern']">Mobile Number is Invalid</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="email" formControlName="email" class="form-control" id="inputEmail" placeholder="Email Address">
+              <div *ngIf="signup.controls['email'].invalid && (signup.controls['email'].dirty || signup.controls['email'].touched)">
+                <small style="color: red;" *ngIf="signup.controls['email'].errors?.['required']">Email is required</small>
+                <small style="color: red;" *ngIf="signup.controls['email'].errors?.['pattern']">Email is Invalid</small>
+              </div>
+          </div>
+          <div class="form-group">
+            <input type="password" formControlName="password" class="form-control" placeholder="Password">
+            <div *ngIf="signup.controls['password'].invalid && (signup.controls['password'].dirty || signup.controls['password'].touched)">
+              <small style="color: red;" *ngIf="signup.controls['password'].errors?.['required']">Password is required</small>
+              <small style="color: red;" *ngIf="signup.controls['password'].errors?.['minlength']">Password have minimum 8 characters.</small>
+            </div>
+            </div>
+          <p style="margin-left: -15px;">Already Have Account <a class="seller-toggle-link" routerLink="/login"
+              style="color: rgb(48, 48, 248); cursor: pointer;">Login</a> here</p>
+
+          <button (click)="userregister(signup)" [disabled]="signup.invalid" type="submit"
+            class="btn btn-primary">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.img-fluid
+{
+  width: 100px;
+  height: 100px;
+  max-width: fit-content;
+  margin-left: 30px;
+}
+
+

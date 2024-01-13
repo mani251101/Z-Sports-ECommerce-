@@ -1,0 +1,57 @@
+<div class="container h-100">
+  <div class="row align-middle">
+
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-1">
+        <div class="txt" style="margin-left: -10px;">
+          <a routerLink="/addproducts" style="text-decoration: none;">
+            <h1>Add Products</h1>
+          </a> <br>
+        </div>
+        <div class="ico-card">
+          <i class="fa fa-plus"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-2">
+        <div class="txt" style="margin-left: -10px;">
+          <a routerLink="/product-list" style="text-decoration: none;">
+            <h1>Product List<br>
+            </h1>
+          </a>
+        </div>
+        <div class="ico-card">
+          <i class="fa fa-wrench"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-4">
+        <div class="txt" style="margin-left: -10px;">
+          <a routerLink="/addproducts" style="text-decoration: none;">
+            <h1>Booking Details</h1>
+          </a> <br>
+        </div>
+        <div class="ico-card">
+          <i class="fa fa-calendar-check-o"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4 column">
+      <div class="card gr-3">
+        <div class="txt" style="margin-left: -10px;">
+          <button (click)="activateOffer()" *ngIf="offer.isOfferValid===false" class="bg-transparent" style="border: transparent;"><h1>Activate Offer <br></h1></button>
+          <button (click)="deactivateOffer()" *ngIf="offer.isOfferValid===true" class="bg-transparent" style="border: transparent;"><h1>Deactivate Offer <br></h1></button>
+
+        </div>
+        <div class="ico-card">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

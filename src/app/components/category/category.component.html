@@ -1,0 +1,111 @@
+<br>
+<body >
+<section class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="collapse card d-lg-block mb-5" id="navbarSupportedContent">
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                        class="accordion-button text-dark bg-light"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#panelsStayOpen-collapseOne"
+                        aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne"
+                        >
+                  Categories
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                <div class="accordion-body">
+                  <ul class="list-unstyled">
+                    <li><a (click)="productfilter('')" style="text-decoration: none; cursor: pointer;" class="text-dark">All Products </a></li>
+                    <li><a (click)="productfilter('cricket')" style="text-decoration: none; cursor: pointer;" class="text-dark">Cricket </a></li>
+                    <li><a (click)="productfilter('badminton')" style="text-decoration: none; cursor: pointer;" class="text-dark">Badminton </a></li>
+                    <li><a (click)="productfilter('fitness kit')" style="text-decoration: none; cursor: pointer;" class="text-dark">Fitness Kits </a></li>
+                    <li><a (click)="productfilter('football')" style="text-decoration: none; cursor: pointer;" class="text-dark">Football </a></li>
+                    <li><a (click)="productfilter('cricket kit')" style="text-decoration: none; cursor: pointer;" class="text-dark">Cricket Kit </a></li>
+                    <li><a (click)="productfilter('accessories')" style="text-decoration: none; cursor: pointer;" class="text-dark">Accessories </a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button text-dark bg-light" type="button" data-mdb-toggle="collapse" data-mdb-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                  Price Range
+                </button>
+              </h2>
+              <br>
+              <input class="form-control" type="text" value="{{selectedprice}}"><br>
+              <input type="range" min="0" max="6000" class="slider" [(ngModel)]="selectedprice" id="priceSlider">
+              <br><br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- sidebar -->
+
+      <!-- content -->
+      <div class="col-lg-9" *ngIf="productCategory" >
+        <div class="row justify-content-center mb-3" *ngFor="let item of productCategory | paginate: { itemsPerPage: pagesizes, currentPage: current_page } | pricerange:selectedprice">
+          <ng-container *ngIf="item.category === selectedcategory || selectedcategory === 'Allproducts' ">
+          <div class="col-md-12">
+            <div class="card shadow-0 border rounded-3" [routerLink]="['/productdetails',item.productId]" style="cursor: pointer;">
+              <div class="card-body">
+                <div class="row g-0">
+                  <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                    <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0">
+                      <img src="application/wwwroot/ProductImage/{{item.imageUrl}}" class="w-100" />
+                        <div class="unavailable-overlay" *ngIf="item.stocksAvailability === '0'">
+                          <p class="unavailable-message" *ngIf="item.stocksAvailability === '0'" style="color: red;">Currently out of stock</p>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-md-5 col-sm-7">
+                    <h5>{{item.productName}}</h5>
+                    <br>
+                    <!-- <div class="d-flex flex-row">
+                      <div class="text-warning mb-1 me-2">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="ms-1">
+                          4.5
+                        </span>
+                      </div>
+                      <span class="text-muted">154 orders</span>
+                    </div> -->
+
+                    <p class="text mb-4 mb-md-0">
+                      {{item.highlights}}
+                    </p>
+                  </div>
+                  <div class="col-xl-3 col-md-3 col-sm-5">
+                    <div class="price d-flex flex-row mb-1">
+                      <h4 class="mb-1 me-1">{{item.productPrice | currency:'INR'}}</h4>
+                    </div>
+                    <!-- <h6 class="text-success">Free shipping</h6> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        </div>
+        <!-- Pagination -->
+        <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
+          <pagination [(ngModel)]="current_page" [totalItems]="productCategory.length" [itemsPerPage]="pagesizes" [maxSize]="5"
+          (pageChanged)="onPageChanged($event)" [rotate]="true" [boundaryLinks]="true" previousText="Previous" nextText="Next" >
+        </pagination>
+        </nav>
+        <!-- Pagination -->
+      </div>
+    </div>
+  </div>
+</section>

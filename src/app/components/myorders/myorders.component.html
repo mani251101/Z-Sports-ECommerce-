@@ -1,0 +1,42 @@
+<section class="h-100 gradient-custom" *ngIf="showproducts">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-10 col-xl-12">
+        <div class="card" style="border-radius: 10px;">
+          <div class="card-header px-4 py-4">
+            <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">{{loggedinUser.firstname | titlecase}} {{loggedinUser.lastname}}</span>!</h5>
+          </div>
+          <div class="card-body p-4" >
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <p class="lead fw-normal mb-0" style="color: #a8729a;">Order Details</p>
+              <a class="lead fw-normal mb-0 d-flex" style="color: #a8729a; text-decoration: none;" routerLink = "" >Go to HomePage</a>
+            </div>
+            <div class="card shadow-0 border mb-4" *ngFor="let item of showproducts">
+              <div class="card-body" *ngFor="let product of item.products">
+                <div class="row">
+                  <div class="col-md-2">
+                    <img src="application/wwwroot/ProductImage/{{product.imageUrl}}"
+                      class="img-fluid" width="50%">
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0">{{product.productName}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{product.count}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <p class="text-muted mb-0 small">{{product.productPrice | currency:'INR'}}</p>
+                  </div>
+                  <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
+                    <button class="btn btn-transparancy" (click)="cancelOrders(item.bookingId)"><h5 class="text-muted mb-2 small">Cancel Order</h5></button>
+                  </div>
+                </div>
+               <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

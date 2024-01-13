@@ -1,0 +1,72 @@
+/* Custom CSS */
+body {
+  padding: 20px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 300px;
+  align-items: center;
+  margin-left: 540px;
+
+}
+
+.table {
+  width: 100%;
+}
+
+/* Bootstrap Overrides */
+.form-outline {
+  position: relative;
+}
+
+.form-outline input {
+  padding-left: 3rem;
+}
+
+.form-outline .form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+  pointer-events: none;
+}
+
+.table th.th-sm,
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.card-img-top {
+  max-width: 100px;
+}
+
+.fa-trash,
+.fa-edit {
+  cursor: pointer;
+}
+.description
+{
+    white-space: nowrap;
+     /* Adjust the width as per your requirements */
+}
+
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.card-img-top
+{
+  width: 100px;
+  height: 100px;
+  max-width: fit-content;
+  margin-left: 10px;
+}

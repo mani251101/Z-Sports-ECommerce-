@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Z-SPORTS</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- bootstrap core css -->
+</head>
+
+<body>
+  <!-- header section -->
+
+  <section class="topProductNavbar">
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/Allproducts" style="color: black;">
+        <img src="/assets/Images/22302-5-sport-transparent-thumb.png">
+        <p>All Products</p>
+      </a>
+    </div>
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/cricket" style="color: black;">
+        <img src="/assets/Images/31774-4-cricket-bat-transparent-picture.png">
+        <p>Cricket</p>
+      </a>
+    </div>
+
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/badminton" style="color: black;">
+        <img src="/assets/Images/22419-8-badminton-racket-photos.png">
+        <p>Badminton</p>
+      </a>
+    </div>
+
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/football" style="color: black;">
+        <img src="/assets/Images/12-blue-football-ball-png-image_400x400.png">
+        <p>Football</p>
+      </a>
+    </div>
+
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/fitness kit" style="color: black;">
+        <img src="/assets/Images/40677-6-gym-equipment-free-hd-image.png">
+        <p>Fitness Kit</p>
+      </a>
+    </div>
+
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/cricket kit" style="color: black;">
+        <img
+          src="/assets/Images/png-transparent-cricket-clothing-and-equipment-mrf-batting-cricket-bats-sporting-goods-cricket-jersey-english-sport-sports-fotor-bg-remover-2023071821355.png">
+        <p>Sports Kit</p>
+      </a>
+    </div>
+
+    <div class="topProductNavbar_Nav">
+      <a routerLink="/category/accessories" style="color: black;">
+        <img src="/assets/Images/ball-pump-105-cosco-original-imafuzffdhaz6gwz-fotor-bg-remover-20230718204744.png" />
+        <p>Accessories</p>
+      </a>
+    </div>
+  </section>
+  <br>
+  <div class="image-container">
+    <img src="/assets/Images/Slice 1 (1).jpg" routerLink="/category/cricket">
+    <img src="/assets/Images/Slice 2.png" routerLink="/category/badminton">
+    <img src="/assets/Images/Slice 3.jpg" routerLink="/category/Allproducts">
+    <img src="/assets/Images/Slice 4.jpg" routerLink="/category/fitnesskit">
+  </div>
+  <br>
+  <h2 class="name"><b>Our Products</b></h2><br>
+  <div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide><img src="/assets/Images/6-2-exercise-bike-download-png.png" width="180px"
+          height="260px" alt=""></ng-template>
+      <ng-template carouselSlide><img
+          src="/assets/Images/ball-pump-105-cosco-original-imafuzffdhaz6gwz-fotor-bg-remover-20230718204744.png"
+          width="180px" height="260px" alt=""></ng-template>
+      <ng-template carouselSlide><img src="/assets/Images/40677-6-gym-equipment-free-hd-image.png" width="180px"
+          height="260px" alt=""></ng-template>
+      <ng-template carouselSlide><img
+          src="/assets/Images/png-transparent-cricket-clothing-and-equipment-mrf-batting-cricket-bats-sporting-goods-cricket-jersey-english-sport-sports-fotor-bg-remover-2023071821355.png"
+          width="180px" height="260px" alt=""></ng-template>
+    </owl-carousel-o>
+  </div><br>
+  <!-- Products -->
+  <h2 class="name"><b>Featured Products</b></h2><br>
+  <div class="product-container">
+    <div class="product-card" *ngFor="let item of products">
+      <img src="application/wwwroot/ProductImage/{{item.imageUrl}}" alt="Product image">
+      <h3>{{item.productName}}</h3><br>
+      <p *ngIf="!offer.isOfferValid==true"><strong>Price:</strong> {{item.productPrice | currency:'INR'}}</p>
+      <p *ngIf="offer.isOfferValid===true" style="text-decoration: line-through;"><strong>Price:</strong>
+        {{item.productPrice | currency:'INR'}}</p>
+      <p *ngIf="offer.isOfferValid===true"><strong>Offer Price:</strong> Rs:{{item.productPrice |offers
+        |currency:'INR'}}</p>
+      <button class="btn btn-success bottom-button">Add to Cart</button>
+    </div>
+  </div>
+</body>
+
+</html>

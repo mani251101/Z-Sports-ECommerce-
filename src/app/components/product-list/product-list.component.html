@@ -1,0 +1,71 @@
+<br>
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <!-- <div class="input-group">
+        <input type="search" id="form1" placeholder="Search Products" class="form-control"/>
+      <button type="button" class="btn btn-primary">
+        <i class="fa fa-search"></i>
+      </button>
+    </div> -->
+
+    <table id="dtBasicExample" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%"
+      *ngIf="product">
+      <thead>
+        <tr>
+          <th class="th-sm">Product Id
+
+          </th>
+          <th class="th-sm">Product Name
+
+          </th>
+          <th class="th-sm">Price
+
+          </th>
+          <th class="th-sm">Description
+
+          </th>
+          <th class="th-sm">Highlights
+
+          </th>
+          <th class="th-sm">Count
+
+          </th>
+          <th class="th-sm">Image
+
+          </th>
+          <th class="th-sm">Actions
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let products of product | paginate: { itemsPerPage: pagesize, currentPage: currentpage }">
+          <td>{{products.productId}}</td>
+          <td>{{products.productName}}</td>
+          <td>{{products.productPrice}}</td>
+          <td class="description">{{products.description}} </td>
+          <td>{{products.highlights}} </td>
+          <td>{{products.stocksAvailability}}</td>
+          <td><img src="application/wwwroot/ProductImage/{{products.imageUrl}}" class="card-img-top" style="width: 100px;" />
+          </td>
+          <td>
+            <i class="fa fa-trash" (click)="deleteItem(products.productId)" aria-hidden="true"
+              style="cursor: pointer;"></i>&nbsp; &nbsp;
+            <a routerLink="/editproducts/{{products.productId}}"><i class="fa fa-edit" aria-hidden="true" style="cursor: pointer;"></i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination-container" *ngIf="product">
+    <pagination [(ngModel)]="currentpage" [totalItems]="product.length" [itemsPerPage]="pagesize" [maxSize]="5"
+      (pageChanged)="onPageChanged($event)" [rotate]="true" [boundaryLinks]="true" previousText="Previous" nextText="Next" >
+    </pagination>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</html>
+
